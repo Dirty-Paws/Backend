@@ -23,7 +23,7 @@ MODELS = os.path.join(BASE_DIR, 'models')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'SECRET KEY WAS HERE!'
+SECRET_KEY = 'SECRET KEY WAS HERE'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
