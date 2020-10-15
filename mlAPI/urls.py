@@ -8,5 +8,6 @@ router.register('mlAPI', views.FoodRemainingTimesView)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('status/', views.PredictRemainingTime),
+    path('remaining/', views.PredictRemainingTime),
+    path('emergency/', views.EmergencyOperations),
 ]
