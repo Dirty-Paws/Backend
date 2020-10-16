@@ -24,6 +24,7 @@ class Emergency(models.Model):
     owner_id = models.IntegerField(null=True, blank=True)
     user_id = models.IntegerField(null=True, blank=True)
     status = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to='uploads/', null=True, blank=True)
     Location_Id = models.IntegerField(null=True, blank=True)
     Longitude = models.FloatField(null=True, blank=True)
     Latitude = models.FloatField(null=True, blank=True)
@@ -34,6 +35,7 @@ class Emergency(models.Model):
             "owner_id": self.owner_id,
             "user_id": self.owner_id,
             "status": self.status,
+            "image": self.image,
             "Location_Id": self.Location_Id,
             "Longitude": self.Longitude,
             "Latitude": self.Latitude,
