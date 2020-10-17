@@ -120,9 +120,9 @@ Cloud SQL kullanabilmek için Cloud SQL Admin API yı aktif etmemiz lazım
 ```
 gcloud services enable sqladmin
 ```
-Google Cloud Platform üzerinden MySQL Veritabanı örneği oluşturmamız gerekiyor bunun için aşağıdaki linkten faydalanabilirsiniz
-[Örnek Oluşturma](https://cloud.google.com/sql/docs/mysql/create-instance)
-Veritabanı örneğimizi oluşturduktan sonra yine terminale dönerek oluşturduğumuz örnek adı ile birlikte aşağıdaki komutu çalıştırıyoruz.
+Google Cloud Platform üzerinden MySQL Veritabanı örneği oluşturmamız gerekiyor bunun için aşağıdaki linkten faydalanabilirsiniz<br>
+[Örnek Oluşturma](https://cloud.google.com/sql/docs/mysql/create-instance)<br>
+Veritabanı örneğimizi oluşturduktan sonra yine terminale dönerek oluşturduğumuz örnek adı ile birlikte aşağıdaki komutu çalıştırıyoruz.<br>
 ```
 gcloud sql instances describe [ÖRNEK ADI]
 ```
@@ -130,9 +130,9 @@ Az önce çalıştırdığımız komut bize bağlantı ismimizi gösterecek **co
 ```
 cloud_sql_proxy.exe -instances="[BAĞLANTI İSMİNİZİ BURAYA GİRİN]"=tcp:3306
 ```
-Google Cloud Platform a dönerek oluşturduğumuz örnek üzerinde bir veritabanı ve bir kullanıcı oluşturacağız. Bunun için aşağıdaki linklerden faydalanabilirsiniz
-[Yeni veritabanı oluşturma](https://cloud.google.com/sql/docs/mysql/create-manage-databases#create)
-[Yeni kullanıcı oluşturma](https://cloud.google.com/sql/docs/mysql/create-manage-users#creating)
+Google Cloud Platform a dönerek oluşturduğumuz örnek üzerinde bir veritabanı ve bir kullanıcı oluşturacağız. Bunun için aşağıdaki linklerden faydalanabilirsiniz<br>
+[Yeni veritabanı oluşturma](https://cloud.google.com/sql/docs/mysql/create-manage-databases#create)<br>
+[Yeni kullanıcı oluşturma](https://cloud.google.com/sql/docs/mysql/create-manage-users#creating)<br>
 
 tekrardan backend/settings.py dosyasını açıyoruz ve aşağıdaki kısmı google cloud daki bilgilerimize göre değiştiriyoruz.
 ```
