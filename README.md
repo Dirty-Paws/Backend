@@ -120,7 +120,7 @@ Cloud SQL kullanabilmek için Cloud SQL Admin API yı aktif etmemiz lazım
 ```
 gcloud services enable sqladmin
 ```
-Google Cloud Platform üzerinden MySQL Veritabanı örneği oluşturmamız gerekiyor bunun için aşağıdaki linkten faydalanabilirsiniz<br>
+Google Cloud Platform üzerinden MySQL Veritabanı örneği oluşturmamız gerekiyor bunun için aşağıdaki linkten faydalanabilirsiniz<br><br>
 [Örnek Oluşturma](https://cloud.google.com/sql/docs/mysql/create-instance)<br>
 Veritabanı örneğimizi oluşturduktan sonra yine terminale dönerek oluşturduğumuz örnek adı ile birlikte aşağıdaki komutu çalıştırıyoruz.<br>
 ```
@@ -130,7 +130,7 @@ Az önce çalıştırdığımız komut bize bağlantı ismimizi gösterecek **co
 ```
 cloud_sql_proxy.exe -instances="[BAĞLANTI İSMİNİZİ BURAYA GİRİN]"=tcp:3306
 ```
-Google Cloud Platform a dönerek oluşturduğumuz örnek üzerinde bir veritabanı ve bir kullanıcı oluşturacağız. Bunun için aşağıdaki linklerden faydalanabilirsiniz<br>
+Google Cloud Platform a dönerek oluşturduğumuz örnek üzerinde bir veritabanı ve bir kullanıcı oluşturacağız. Bunun için aşağıdaki linklerden faydalanabilirsiniz<br><br>
 [Yeni veritabanı oluşturma](https://cloud.google.com/sql/docs/mysql/create-manage-databases#create)<br>
 [Yeni kullanıcı oluşturma](https://cloud.google.com/sql/docs/mysql/create-manage-users#creating)<br>
 
