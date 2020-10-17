@@ -98,8 +98,11 @@ if os.getenv('GAE_APPLICATION', None):
     # the unix socket at /cloudsql/<your-cloudsql-connection string>
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/dirty-paws:europe-west3:dirtypaws-instance',
+            'USER': 'dirtypaws',
+            'PASSWORD': '[PASSWORD WAS HERE]',
+            'NAME': 'dirtypawsbackend',
         }
     }
 else:
@@ -109,8 +112,12 @@ else:
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'dirtypawsbackend',
+            'HOST': '127.0.0.1',
+            'USER': 'dirtypaws',
+            'PORT':3306,
+            'PASSWORD': '[PASSWORD WAS HERE]',
         }
     }
 # [END db_setup]
