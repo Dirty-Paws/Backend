@@ -11,8 +11,6 @@ from django.conf import settings
 
 # Create your views here.
 import pandas as pd
-import numpy as np
-import json
 import pickle
 import os
 
@@ -38,7 +36,7 @@ def PredictRemainingTime(request):
             data = request.data
 
             # Create column names
-            dictionary = {"Food_Amount_gr": [data["Food_Amount_gr"]]}
+            dictionary = {"Food_Amount_gr": [float(data["Food_Amount_gr"])]}
             for i in range(1, number_of_locations):
                 if i != data["Location_Id"]:
                     dictionary[str(i)] = [0]
@@ -52,7 +50,7 @@ def PredictRemainingTime(request):
             prediction = model.predict(df.values)
 
             # Add prediction to the data
-            data.update({"Prediction":prediction})
+            data.update({"Prediction":float(prediction)})
 
             # Save the data
             serializer = FoodRemainingTimesSerializers(data=data)
@@ -74,6 +72,7 @@ def PredictRemainingTime(request):
         serializer = FoodRemainingTimesSerializers(data, many=True)
 
         return Response(serializer.data)
+
 
 # Emergency Handling
 class EmergencyView(viewsets.ModelViewSet):
