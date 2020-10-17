@@ -9,15 +9,8 @@ class FoodRemainingTimes(models.Model):
     Latitude = models.FloatField(null=True, blank=True)
     Prediction = models.FloatField(null=True, blank=True)
 
-    def serialize(self):
-        return {
-            "Food_Amount_gr": self.Food_Amount_gr,
-            "Location_Id": self.Location_Id,
-            "Longitude": self.Longitude,
-            "Latitude": self.Latitude,
-            "Prediction": self.Prediction
-        }
-
+    def __str__(self):
+        return f"{self.Food_Amount_gr} {self.Location_Id} {self.Longitude} {self.Latitude} {self.Location_Id} {self.Prediction}"
 
 class Emergency(models.Model):
     message = models.CharField(max_length=200, null=True, blank=True)
@@ -29,14 +22,5 @@ class Emergency(models.Model):
     Longitude = models.FloatField(null=True, blank=True)
     Latitude = models.FloatField(null=True, blank=True)
 
-    def serialize(self):
-        return {
-            "message": self.message,
-            "owner_id": self.owner_id,
-            "user_id": self.owner_id,
-            "status": self.status,
-            "image": self.image,
-            "Location_Id": self.Location_Id,
-            "Longitude": self.Longitude,
-            "Latitude": self.Latitude,
-        }
+    def __str__(self):
+        return f"{self.message} {self.owner_id} {self.user_id} {self.status} {self.image} {self.Location_Id} {self.Longitude} {self.Latitude}"
