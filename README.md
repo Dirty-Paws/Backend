@@ -53,6 +53,19 @@ Akıllı mama kabından POST request olarak gönderilen ağırlık bilgisine gö
     }
 ```
 
+
+- https://dirty-paws.ey.r.appspot.com/status Akıllı mama kabında mama kalıp kalmadığının durum bilgisi POST Request olarak buraya gönderilir. Uygulama buradaki veriden faydalanarak mama haritasındaki noktaların durumunu günceller
+
+Örnek POST/GET REQUEST
+```
+{
+	"IsFoodFinished":1,
+	"Location_Id": 0,
+	"Longitude": 35.111503,
+	"Latitude": 33.939892,
+}
+```
+
 ## 3. Localde Kurulum
 
 *Windows 10 kullanıcıları için hazırlanmıştır*
