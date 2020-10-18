@@ -10,4 +10,5 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('remaining/', views.PredictRemainingTime),
     path('emergency/', views.EmergencyOperations),
+    path('status/', views.FoodStatusOperations),
 ]

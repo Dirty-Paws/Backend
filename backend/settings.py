@@ -101,7 +101,7 @@ if os.getenv('GAE_APPLICATION', None):
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '/cloudsql/dirty-paws:europe-west3:dirtypaws-instance',
             'USER': 'dirtypaws',
-            'PASSWORD': '[PASSWORD WAS HERE]',
+            'PASSWORD': 'PASSWORD WAS HERE',
             'NAME': 'dirtypawsbackend',
         }
     }
@@ -117,7 +117,7 @@ else:
             'HOST': '127.0.0.1',
             'USER': 'dirtypaws',
             'PORT':3306,
-            'PASSWORD': '[PASSWORD WAS HERE]',
+            'PASSWORD': 'PASSWORD WAS HERE',
         }
     }
 # [END db_setup]
