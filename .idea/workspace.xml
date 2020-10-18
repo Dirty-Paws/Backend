@@ -21,6 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="038ad456-6ee7-486a-abf4-5effa0c32be5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlAPI/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlAPI/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlAPI/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlAPI/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlAPI/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlAPI/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlAPI/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlAPI/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlAPI/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
