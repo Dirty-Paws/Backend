@@ -24,3 +24,13 @@ class Emergency(models.Model):
 
     def __str__(self):
         return f"{self.message} {self.owner_id} {self.user_id} {self.status} {self.image} {self.Location_Id} {self.Longitude} {self.Latitude}"
+
+class FoodStatus(models.Model):
+
+    IsFoodFinished = models.IntegerField(null=True, blank=True)
+    Location_Id = models.IntegerField(null=True, blank=True)
+    Longitude = models.FloatField(null=True, blank=True)
+    Latitude = models.FloatField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.IsFoodFinished} {self.Location_Id} {self.Longitude} {self.Latitude}"

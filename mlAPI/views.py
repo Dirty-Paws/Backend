@@ -5,8 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import FoodRemainingTimesSerializers, EmergencySerializers
-from .models import FoodRemainingTimes, Emergency
+from .serializers import FoodRemainingTimesSerializers, EmergencySerializers, FoodStatusSerializers
+from .models import FoodRemainingTimes, Emergency, FoodStatus
 from django.conf import settings
 
 # Create your views here.
@@ -95,3 +95,38 @@ def EmergencyOperations(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Food Status
+class FoodStatusView(viewsets.ModelViewSet):
+    queryset = FoodStatus.objects.all()
+    serializer_class = FoodStatusSerializers
+
+@api_view(["POST", "GET"])
+def FoodStatusOperations(request):
+
+    try:
+
+        # GET METHOD
+        if request.method == 'GET':
+            food_status = FoodStatus.objects.all()
+            serializer = FoodStatusSerializers(food_status, many=True)
+            return Response(serializer.data)
+
+        # POST METHOD
+        elif request.method == 'POST':
+
+            data = request.data
+            try:
+                location = FoodStatus.objects.get(Location_Id=data["Location_Id"])
+                for key, value in data.items():
+                    setattr(location, key, value)
+                location.save()
+            except FoodStatus.DoesNotExist:
+                data.update({'IsFoodFinished': data["IsFoodFinished"]})
+                location = FoodStatus(**data)
+                location.save()
+
+            return Response(status.HTTP_200_OK)
+    except Exception as e:
+        return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
