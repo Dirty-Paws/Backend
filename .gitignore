@@ -1,2 +1,4 @@
 env/
 cloud_sql_proxy.exe
+.idea/workspace.xml
+.idea/
