@@ -9,10 +9,15 @@ from .serializers import FoodRemainingTimesSerializers, EmergencySerializers, Fo
 from .models import FoodRemainingTimes, Emergency, FoodStatus
 from django.conf import settings
 
-# Create your views here.
 import pandas as pd
 import pickle
 import os
+
+# HomePage
+def home(request):
+    template = "home.html"
+    context = {}
+    return render(request, template, context)
 
 
 # Food Remaining Times

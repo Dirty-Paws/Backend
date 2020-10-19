@@ -18,6 +18,7 @@ pymysql.version_info = (1, 4, 2, "final", 0)
 pymysql.install_as_MySQLdb()
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,7 +102,7 @@ if os.getenv('GAE_APPLICATION', None):
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '/cloudsql/dirty-paws:europe-west3:dirtypaws-instance',
             'USER': 'dirtypaws',
-            'PASSWORD': 'PASSWORD WAS HERE',
+            'PASSWORD': '[PASSWORD WAS HERE]',
             'NAME': 'dirtypawsbackend',
         }
     }
@@ -117,7 +118,7 @@ else:
             'HOST': '127.0.0.1',
             'USER': 'dirtypaws',
             'PORT':3306,
-            'PASSWORD': 'PASSWORD WAS HERE',
+            'PASSWORD': '[PASSWORD WAS HERE]',
         }
     }
 # [END db_setup]
@@ -165,5 +166,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 # Google App Engine: set static root for local static files
 # https://cloud.google.com/appengine/docs/flexible/python/serving-static-files
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
