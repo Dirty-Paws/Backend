@@ -22,3 +22,6 @@ __pycache__/
 /env
 
 cloud_sql_proxy.exe
+
+models/is_foodweights.h5
+models/isfood_model.json
