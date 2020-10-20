@@ -8,7 +8,8 @@ Django Rest Framework ile geliştirildi. Şuan Google App Engine ile deploy edil
 
 ## 2. Endpointler
 
-- https://dirty-paws.ey.r.appspot.com/remaining/ 
+- **https://dirty-paws.ey.r.appspot.com/remaining/**
+
 Akıllı mama kabından POST request olarak gönderilen ağırlık bilgisine göre kaptaki mamanın bitmesine kalan tahmini zamanı hesaplamamıza yarar
 
 Örnek POST REQUEST
@@ -36,7 +37,9 @@ Akıllı mama kabından POST request olarak gönderilen ağırlık bilgisine gö
 ```
 
 
-- https://dirty-paws.ey.r.appspot.com/emergency Kullanıcıların yaptığı acil durum bildirimlerinin yönetimi burada sağlanır
+- **https://dirty-paws.ey.r.appspot.com/emergency**
+
+Kullanıcıların yaptığı acil durum bildirimlerinin yönetimi burada sağlanır.
 
 Örnek POST/GET REQUEST
 ```
@@ -54,7 +57,9 @@ Akıllı mama kabından POST request olarak gönderilen ağırlık bilgisine gö
 ```
 
 
-- https://dirty-paws.ey.r.appspot.com/status Akıllı mama kabında mama kalıp kalmadığının durum bilgisi POST Request olarak buraya gönderilir. Uygulama buradaki veriden faydalanarak mama haritasındaki noktaların durumunu günceller
+- **https://dirty-paws.ey.r.appspot.com/status**
+
+Akıllı mama kabında mama kalıp kalmadığının durum bilgisi POST Request olarak buraya gönderilir. Uygulama buradaki veriden faydalanarak mama haritasındaki noktaların durumunu günceller.
 
 Örnek POST/GET REQUEST
 ```
@@ -66,7 +71,10 @@ Akıllı mama kabından POST request olarak gönderilen ağırlık bilgisine gö
 }
 ```
 
-- https://dirty-paws.ey.r.appspot.com/isFood Bağlı bulunan kamera tarafından akıllı mama kabının üstünden veya yanından çekilmiş fotoğraflarda mama kabının içerisinde mama veya yabancı cisim olup olmadığının tespit edilmesini sağlayamak amacıyla geliştirilen derin öğrenme modelinin barındığı endpointtir. Gelen fotoğrafaya göre kabın içinde mama olup olmadığı bilgisini 1 veya 0 olarak döndürür.
+- **https://dirty-paws.ey.r.appspot.com/isFood**
+Bağlı bulunan kamera tarafından akıllı mama kabının üstünden veya yanından çekilmiş fotoğraflarda mama kabının içerisinde mama veya yabancı cisim olup olmadığının tespit edilmesini sağlayamak amacıyla geliştirilen derin öğrenme modelinin barındığı endpointtir. Gelen fotoğrafaya göre kabın içinde mama olup olmadığı bilgisini 1 veya 0 olarak döndürür.
+
+*Elimizdeki kredi ile GAE üzerinde GPU çalıştıramadığımız için bu kısım üretime dahil edilmemiştir. Lokal olarak çalıştırabilirsiniz.*
 
 Örnek POST REQUEST
 ```
