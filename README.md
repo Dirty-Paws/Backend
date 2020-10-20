@@ -66,6 +66,34 @@ Akıllı mama kabından POST request olarak gönderilen ağırlık bilgisine gö
 }
 ```
 
+- https://dirty-paws.ey.r.appspot.com/isFood Bağlı bulunan kamera tarafından akıllı mama kabının üstünden veya yanından çekilmiş fotoğraflarda mama kabının içerisinde mama veya yabancı cisim olup olmadığının tespit edilmesini sağlayamak amacıyla geliştirilen derin öğrenme modelinin barındığı endpointtir. Gelen fotoğrafaya göre kabın içinde mama olup olmadığı bilgisini 1 veya 0 olarak döndürür.
+
+Örnek POST REQUEST
+```
+{
+        "ImageBowl": "\"http://storage.googleapis.com/dirty-paws.appspot.com/test.jpg\"",
+        "IsFood": null,
+        "Resolved": 3,
+        "Location_Id": 0,
+        "Location_Id": 1,
+        "Longitude": 35.113370,
+        "Latitude": 33.933439
+}
+```
+
+Örnek GET REQUEST
+```
+{
+        "ImageBowl": "\"http://storage.googleapis.com/dirty-paws.appspot.com/test.jpg\"",
+        "IsFood": 1,
+        "Resolved": 3,
+        "Location_Id": 0,
+        "Location_Id": 1,
+        "Longitude": 35.113370,
+        "Latitude": 33.933439
+}
+```
+
 ## 3. Localde Kurulum
 
 *Windows 10 kullanıcıları için hazırlanmıştır*
