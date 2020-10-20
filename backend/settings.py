@@ -29,7 +29,7 @@ MODELS = os.path.join(BASE_DIR, 'models')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'SECRET KEY WAS HERE'
+SECRET_KEY = '2fy@dvmy!as7_!bqu0j@xc@4awd0cdj98#mlm^dt6po8$y9xwr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,15 +83,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-"""
-
 
 # [START db_setup]
 if os.getenv('GAE_APPLICATION', None):
@@ -102,7 +93,7 @@ if os.getenv('GAE_APPLICATION', None):
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '/cloudsql/dirty-paws:europe-west3:dirtypaws-instance',
             'USER': 'dirtypaws',
-            'PASSWORD': '[PASSWORD WAS HERE]',
+            'PASSWORD': 'dirtyPaws2020',
             'NAME': 'dirtypawsbackend',
         }
     }
@@ -118,7 +109,7 @@ else:
             'HOST': '127.0.0.1',
             'USER': 'dirtypaws',
             'PORT':3306,
-            'PASSWORD': '[PASSWORD WAS HERE]',
+            'PASSWORD': 'dirtyPaws2020',
         }
     }
 # [END db_setup]

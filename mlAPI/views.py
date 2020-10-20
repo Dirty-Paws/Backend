@@ -1,17 +1,25 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import FoodRemainingTimesSerializers, EmergencySerializers, FoodStatusSerializers
-from .models import FoodRemainingTimes, Emergency, FoodStatus
+from .serializers import FoodRemainingTimesSerializers, EmergencySerializers, FoodStatusSerializers, FoodOrNotSerializers
+from .models import FoodRemainingTimes, Emergency, FoodStatus, FoodOrNot
 from django.conf import settings
 
 import pandas as pd
+import numpy as np
 import pickle
 import os
+
+from io import BytesIO
+
+from PIL import Image
+from keras.models import model_from_json
+from keras.preprocessing import image
+import urllib
+import requests
 
 # HomePage
 def home(request):
@@ -28,7 +36,6 @@ class FoodRemainingTimesView(viewsets.ModelViewSet):
 
 @api_view(["POST", "GET"])
 def PredictRemainingTime(request):
-
     # POST METHOD
     if request.method == "POST":
         number_of_locations = 5
@@ -55,11 +62,11 @@ def PredictRemainingTime(request):
             prediction = model.predict(df.values)
 
             # Add prediction to the data
-            data.update({"Prediction":float(prediction)})
+            data.update({"Prediction": float(prediction)})
 
             # Save the data
             serializer = FoodRemainingTimesSerializers(data=data)
-        
+
             if serializer.is_valid():
                 serializer.save()
 
@@ -84,9 +91,9 @@ class EmergencyView(viewsets.ModelViewSet):
     queryset = Emergency.objects.all()
     serializer_class = EmergencySerializers
 
+
 @api_view(["POST", "GET"])
 def EmergencyOperations(request):
-
     # GET METHOD
     if request.method == 'GET':
         emergencies = Emergency.objects.all()
@@ -107,9 +114,9 @@ class FoodStatusView(viewsets.ModelViewSet):
     queryset = FoodStatus.objects.all()
     serializer_class = FoodStatusSerializers
 
+
 @api_view(["POST", "GET"])
 def FoodStatusOperations(request):
-
     try:
 
         # GET METHOD
@@ -135,3 +142,81 @@ def FoodStatusOperations(request):
             return Response(status.HTTP_200_OK)
     except Exception as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
+
+
+# Food Or Not
+class FoodOrNotView(viewsets.ModelViewSet):
+    queryset = FoodOrNot.objects.all()
+    serializer_class = FoodOrNotSerializers
+
+# Load and Preprocess
+def load_process(img_url):
+
+    # IF 0 IS FOOD
+    # IF 1 IS NOT FOOD
+
+    img_url = img_url.strip('\'"')
+    response = requests.get(img_url)
+    img = Image.open(BytesIO(response.content))
+    img = img.resize((224,224))
+    img = image.img_to_array(img)
+    img = img / 255
+    dictionary = {"Image":img}
+    value = np.array(dictionary["Image"])
+    value = value.reshape(1, 224, 224, 3)
+    return value
+
+@api_view(["POST", "GET"])
+def PredictIsFoodOrNot(request):
+
+    # POST METHOD
+    if request.method == "POST":
+        try:
+
+            # Upload the model
+            json_file = open(os.path.join(settings.MODELS, "isfood_model.json"), 'rb')
+            loaded_model_json = json_file.read()
+            json_file.close()
+            model = model_from_json(loaded_model_json)
+
+            # Load weights into the model
+            model.load_weights(os.path.join(settings.MODELS, "is_foodweights.h5"))
+
+            # Compile the model
+            model.compile(loss='binary_crossentropy', optimizer='Adam', metrics=['accuracy'])
+
+            # Get the data
+            data = request.data
+
+            # Get the image from data
+            bowl_image_url = data["ImageBowl"]
+
+            # Get the image and make preprocessing
+            final_img = load_process(bowl_image_url)
+
+            # Make Prediction
+            prediction = model.predict(final_img)
+
+            # Add prediction to the data
+            data.update({"IsFood": int(not int(prediction))})
+
+            # Save the data
+            serializer = FoodOrNotSerializers(data=data)
+
+            if serializer.is_valid():
+                serializer.save()
+
+            return Response(status.HTTP_200_OK)
+        except ValueError as e:
+            return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
+
+    # GET METHOD
+    elif request.method == "GET":
+
+        # Get all remaining times
+        data = FoodOrNot.objects.all()
+
+        # Serialize
+        serializer = FoodOrNotSerializers(data, many=True)
+
+        return Response(serializer.data)

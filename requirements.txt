@@ -7,3 +7,6 @@ sklearn-crfsuite==0.3.6
 pandas
 pickleshare==0.7.5
 PyMySQL==0.10.1
+keras
+requests
+Pillow
